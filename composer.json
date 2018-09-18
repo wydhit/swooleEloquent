@@ -1,0 +1,23 @@
+{
+    "name": "wydhit/swoole-eloquent",
+    "description": "在swoole中使用laravel的Eloquent",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wydhit",
+            "email": "wydhit@163.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+		"php": ">=7.0",
+        "ext-swoole": ">=2.1",
+		"illuminate/database": "^5.7",
+	},
+	 "autoload": {
+        "psr-4": {
+            "SwooleEloquent\\": "src"
+        }
+    }
+}
