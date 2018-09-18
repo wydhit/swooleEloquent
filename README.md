@@ -1,6 +1,9 @@
 # swooleEloquent
 在swoole中是laravel中的eloquent
 
+# 安装
+  composer require wydhit/swoole-eloquent
+
 # 配置
 
 $config=[];//配置参见laravel数据库配置
