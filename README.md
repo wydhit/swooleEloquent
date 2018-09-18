@@ -18,6 +18,6 @@ swooleEloquent\Db::table('user')->limit(10)->get(); table方法之后的参见la
 
 # model
 
-用户model应该继承swooleEloquent\Db 而不是Eloquent本身的model
+用户model应该继承swooleEloquent\Model 而不是Eloquent本身的model
 
 model具体用法参见laravel文档
