@@ -21,3 +21,6 @@ swooleEloquent\Db::table('user')->limit(10)->get(); table方法之后的参见la
 用户model应该继承swooleEloquent\Model 而不是Eloquent本身的model
 
 model具体用法参见laravel文档
+
+# 注意
+  请求结束时应该 调用  swooleEloquent\Db::disConnection(); 释放pdo连接
