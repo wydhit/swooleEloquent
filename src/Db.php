@@ -62,6 +62,51 @@ class Db
         return self::instance()->getConnection($connect_name)->table($table);
     }
 
+    public static function select($query, $bindings = [], $useReadPdo = true)
+    {
+        return self::instance()->getConnection()->select($query, $bindings, $useReadPdo);
+    }
+
+    public static function insert($query, $bindings = [])
+    {
+        return self::instance()->getConnection()->insert($query, $bindings);
+    }
+
+    public static function update($query, $bindings = [])
+    {
+        return self::instance()->getConnection()->update($query, $bindings);
+    }
+
+    public static function delete($query, $bindings = [])
+    {
+        return self::instance()->getConnection()->delete($query, $bindings);
+    }
+
+    public static function listen(\Closure $callback)
+    {
+        return self::instance()->getConnection()->listen($callback);
+    }
+
+    public static function transaction(\Closure $callback, $attempts = 1)
+    {
+        return self::instance()->getConnection()->transaction($callback, $attempts);
+    }
+
+    public static function beginTransaction()
+    {
+        return self::instance()->getConnection()->beginTransaction();
+    }
+
+    public static function rollBack()
+    {
+        return self::instance()->getConnection()->rollBack();
+    }
+
+    public static function commit()
+    {
+        return self::instance()->getConnection()->commit();
+    }
+
     public static function connection($connect_name = 'default')
     {
         return self::instance()->getConnection($connect_name);
@@ -72,7 +117,7 @@ class Db
         /**
          * @var $contextDataByKey Connection
          */
-        $contexts = $connect = ConnectContext::getContextDataByKey('connect');
+        $contexts = ConnectContext::getContextDataByKey('connect');
         if (is_array($contexts)) {
             foreach ($contexts as $context) {
                 if (method_exists($context, 'disconnect')) {
@@ -133,6 +178,11 @@ class Db
             ConnectContext::setContextDataByChildKey('connect', $connect_name, $connect);
         }
         return $connect;
+    }
+
+    public static function __callStatic($method, $parameters)
+    {
+        return static::connection()->$method(...$parameters);
     }
 
 }

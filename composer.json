@@ -9,10 +9,11 @@
             "email": "wydhit@163.com"
         }
     ],
+    "minimum-stability": "beta",
     "require": {
 		"php": ">=7.0",
         "ext-swoole": ">=2.1",
-		"illuminate/database": "^5.7"
+		"illuminate/database": "^5.7",
 	},
 	 "autoload": {
         "psr-4": {
